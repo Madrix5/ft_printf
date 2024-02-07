@@ -6,7 +6,7 @@
 /*   By: adrijime <adrijime@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/06 20:00:20 by adrijime          #+#    #+#             */
-/*   Updated: 2024/02/06 20:41:26 by adrijime         ###   ########.fr       */
+/*   Updated: 2024/02/07 20:06:19 by adrijime         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ static void	ft_percent(char	c)
 	return ;
 }
 
-int	ft_checker(va_list ap, char const *str, int res)
+static int	ft_checker(va_list ap, char const *str, int res)
 {
 	return (0);
 }

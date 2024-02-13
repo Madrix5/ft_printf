@@ -6,11 +6,11 @@
 /*   By: adrijime <adrijime@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/06 20:00:20 by adrijime          #+#    #+#             */
-/*   Updated: 2024/02/13 19:21:11 by adrijime         ###   ########.fr       */
+/*   Updated: 2024/02/13 19:34:29 by adrijime         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printf.h"
+#include "printf.h"
 
 static int	ft_percent(va_list ap, char	c, int res)
 {
@@ -35,10 +35,10 @@ static int	ft_percent(va_list ap, char	c, int res)
 	return (res);
 }
 
-static int	ft_percent_bonus(char c)
-{
-	return (1);
-}
+// static int	ft_percent_bonus(char c)
+// {
+// 	return (1);
+// }
 
 static int	ft_checker(va_list ap, char const *str, int res)
 {

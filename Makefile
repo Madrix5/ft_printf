@@ -6,7 +6,7 @@
 #    By: adrijime <adrijime@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/01/31 17:44:31 by adrijime          #+#    #+#              #
-#    Updated: 2024/02/13 16:55:32 by adrijime         ###   ########.fr        #
+#    Updated: 2024/02/13 20:11:17 by adrijime         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -39,11 +39,12 @@ CC		= cc
 FLAGS	= -Wall -Wextra -Werror -MMD
 RM 		= rm -rf
 LIBC 	= ar -rcs
-LIBFT	= libft/Makefile
 
 #=================================== SRC ======================================#
 
-#SRCF =	
+SRCF =	ft_printf.c \
+		ft_printf_utils.c \
+		ft_putnbr_base.c
 
 #=============================== DIRECTORIES ==================================#
 
@@ -53,22 +54,19 @@ OBJ = $(addprefix $(DIR_OBJ)/, $(SRCF:.c=.o))
 
 #================================= RULES ======================================#
 
-all: $(LIBFT) $(NAME)
+all: dir $(NAME)
 -include $(DEP)
 
-$(LIBFT): 
-
-$(DIR_OBJ):
+dir:
 		mkdir -p $(DIR_OBJ)
 		echo "$(YELLOW)💾== Directory created objects and dependencies ==💾$(DEF_COLOR)"
 
-
 $(DIR_OBJ)/%.o: %.c Makefile libft.h | $(DIR_OBJ)
 		$(CC) $(FLAGS) -c $< -o $@
-
-$(NAME): $(OBJ) Makefile libft.h 
-		$(LIBC) $@ $(OBJ)
-		echo "$(GREEN)✅=== All compiled with flags, created libft.a ===🖥$(DEF_COLOR)"
+		
+$(NAME): $(OBJ) Makefile printf.h
+		$(LIBC) $@ $<
+		echo "$(GREEN)✅=== All compiled with flags, created libftprintf.a ===🖥$(DEF_COLOR)"
 
 #================================= CLEAN ======================================#
 
@@ -84,6 +82,6 @@ re: fclean all
 
 #================================== PHONY =====================================#
 
-.PHONY: all clean fclean re bonus
+.PHONY: all clean fclean re
 
 .SILENT:

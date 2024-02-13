@@ -6,13 +6,14 @@
 /*   By: adrijime <adrijime@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/16 20:08:41 by adrijime          #+#    #+#             */
-/*   Updated: 2024/01/16 20:10:50 by adrijime         ###   ########.fr       */
+/*   Updated: 2024/02/13 14:13:25 by adrijime         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	ft_putchar_fd(char c, int fd)
+int	ft_putchar_fd(char c, int fd)
 {
 	write(fd, &c, 1);
+	return (1);
 }

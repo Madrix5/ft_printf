@@ -6,21 +6,22 @@
 /*   By: adrijime <adrijime@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/13 17:50:12 by adrijime          #+#    #+#             */
-/*   Updated: 2024/02/13 17:51:27 by adrijime         ###   ########.fr       */
+/*   Updated: 2024/02/13 18:17:24 by adrijime         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-int	ft_putchar_fd(char c, int fd)
+int	ft_putchar_fd(char c, int fd, int res)
 {
 	if (!fd || !c)
 		return (-1);
 	write(fd, &c, 1);
-	return (1);
+	res++;
+	return (res);
 }
 
-int	ft_putstr_fd(char *s, int fd)
+int	ft_putstr_fd(char *s, int fd, int res)
 {
 	int	i;
 
@@ -31,5 +32,7 @@ int	ft_putstr_fd(char *s, int fd)
 	{
 		write(fd, &s[i], 1);
 		i++;
+		res++;
 	}
+	return (res);
 }

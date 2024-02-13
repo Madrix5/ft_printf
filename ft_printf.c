@@ -6,7 +6,7 @@
 /*   By: adrijime <adrijime@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/06 20:00:20 by adrijime          #+#    #+#             */
-/*   Updated: 2024/02/13 19:05:59 by adrijime         ###   ########.fr       */
+/*   Updated: 2024/02/13 19:21:11 by adrijime         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,10 +16,23 @@ static int	ft_percent(va_list ap, char	c, int res)
 {
 	if (c == 'c' && (ft_putchar_fd(ap, 1, res)) == -1)
 		return (-1);
-	if (c == 's' && (ft_putstr_fd(ap, 1, res)) == -1)
+	else if (c == 's' && (ft_putstr_fd(ap, 1, res)) == -1)
 		return (-1);
-	if (c == 'p' && (ft_putnbr_base(ap, 16, res)) == -1)
+	else if (c == 'p' && (ft_putnbr_base(ap, 16, res, 0, 0)) == -1)
 		return (-1);
+	else if (c == 'd' && (ft_putnbr_base(ap, 10, res, 1, 0)) == -1)
+		return (-1);
+	else if (c == 'i' && (ft_putnbr_base(ap, 10, res, 1, 0)) == -1)
+		return (-1);
+	else if (c == 'u' && (ft_putnbr_base(ap, 10, res, 0, 0)) == -1)
+		return (-1);
+	else if (c == 'x' && (ft_putnbr_base(ap, 16, res, 0, 0)) == -1)
+		return (-1);
+	else if (c == 'X' && (ft_putnbr_base(ap, 16, res, 0, 1)) == -1)
+		return (-1);
+	else if (c == '%' && (ft_putchar_fd('%', 1, res)) == -1)
+		return (-1);
+	return (res);
 }
 
 static int	ft_percent_bonus(char c)
@@ -73,18 +86,27 @@ int	main(void)
 	// int		i;
 	// char	*ch;
 	char 	*str;
+	int len;
 
 	c = 'h';
 	// i = 54;
 	// ch = &c;
 	str = "Soy Eduardo Manos Tijeras. Te corto el pelo?";
+	printf("Char: %c\n", c);
 	ft_printf("Char: %c\n", c);
+	printf("String: %s\n", str);
 	ft_printf("String: %s\n", str);
+	// printf("Pointer: %p\n", ch);
 	// ft_printf("Pointer: %p\n", ch);
+	// printf("Decimal: %d\n", i);
 	// ft_printf("Decimal: %d\n", i);
+	// printf("Entero base 10: %i", i);
 	// ft_printf("Entero base 10: %i", i);
+	// printf("Decimal base 10 sin signo: %u", i);
 	// ft_printf("Decimal base 10 sin signo: %u", i);
+	// printf("Hexadecimal minus: %u", i);
 	// ft_printf("Hexadecimal minus: %u", i);
+	// printf("Hexadecimal mayus: %u", i);
 	// ft_printf("Hexadecimal mayus: %u", i);
 	ft_printf("%%");
 	return (0);

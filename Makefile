@@ -6,7 +6,7 @@
 #    By: adrijime <adrijime@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/01/31 17:44:31 by adrijime          #+#    #+#              #
-#    Updated: 2024/02/06 19:59:29 by adrijime         ###   ########.fr        #
+#    Updated: 2024/02/12 15:40:15 by adrijime         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -50,13 +50,10 @@ DIR_OBJ = objects
 
 OBJ = $(addprefix $(DIR_OBJ)/, $(SRCF:.c=.o))
 
-B_OBJ = $(addprefix $(DIR_OBJ)/, $(BON_F:.c=.o))
-
 #================================= RULES ======================================#
 
 all: $(NAME)
 -include $(DEP)
--include $(B_DEP)
 
 $(DIR_OBJ):
 		mkdir -p $(DIR_OBJ)

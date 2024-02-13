@@ -6,7 +6,13 @@
 /*   By: adrijime <adrijime@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/06 19:56:44 by adrijime          #+#    #+#             */
-/*   Updated: 2024/02/06 19:56:45 by adrijime         ###   ########.fr       */
+/*   Updated: 2024/02/13 18:02:20 by adrijime         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "ft_printf.h"
+
+int	ft_putnbr_base()
+{
+	return (0);
+}

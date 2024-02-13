@@ -1,0 +1,8 @@
+.vs_code
+.DS_Store
+main.c
+*.o
+*.d
+*.swp
+*.swo
+*.swn

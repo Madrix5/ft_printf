@@ -6,7 +6,7 @@
 #    By: adrijime <adrijime@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/01/31 17:44:31 by adrijime          #+#    #+#              #
-#    Updated: 2024/02/12 15:40:15 by adrijime         ###   ########.fr        #
+#    Updated: 2024/02/13 16:55:32 by adrijime         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -39,6 +39,7 @@ CC		= cc
 FLAGS	= -Wall -Wextra -Werror -MMD
 RM 		= rm -rf
 LIBC 	= ar -rcs
+LIBFT	= libft/Makefile
 
 #=================================== SRC ======================================#
 
@@ -52,8 +53,10 @@ OBJ = $(addprefix $(DIR_OBJ)/, $(SRCF:.c=.o))
 
 #================================= RULES ======================================#
 
-all: $(NAME)
+all: $(LIBFT) $(NAME)
 -include $(DEP)
+
+$(LIBFT): 
 
 $(DIR_OBJ):
 		mkdir -p $(DIR_OBJ)

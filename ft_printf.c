@@ -6,7 +6,7 @@
 /*   By: adrijime <adrijime@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/06 20:00:20 by adrijime          #+#    #+#             */
-/*   Updated: 2024/02/13 19:34:29 by adrijime         ###   ########.fr       */
+/*   Updated: 2024/02/14 18:19:34 by adrijime         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,25 +14,30 @@
 
 static int	ft_percent(va_list ap, char	c, int res)
 {
-	if (c == 'c' && (ft_putchar_fd(ap, 1, res)) == -1)
+	int	count;
+
+	count = 0;
+	if (c == 'c')
+		count += ft_putchar_fd(va_arg(ap, int), res);
+	else if (c == 's')
+		count += ft_putstr_fd(va_arg(ap, char *), res);
+	// else if (c == 'p')
+	// 	count += ft_putnbr_base(va_arg(ap, unsigned long long), 16, res, 0, 0);
+	// else if (c == 'd')
+	// 	count += ft_putnbr(va_arg(ap, int), 10, res, 1, 0);
+	// else if (c == 'i')
+	// 	count += ft_putnbr(va_arg(ap, int), 10, res, 1, 0);
+	// else if (c == 'u')
+	// 	count += ft_putnbr(va_arg(ap, int), 10, res, 0, 0);
+	// else if (c == 'x')
+	// 	count += ft_putnbr_base(va_arg(ap, unsigned long long), 16, res, 0, 0);
+	// else if (c == 'X')
+	// 	count += ft_putnbr_base(va_arg(ap, unsigned long long), 16, res, 0, 1);
+	else if (c == '%')
+		count += ft_putchar_fd('%', res);
+	if (count == -1)
 		return (-1);
-	else if (c == 's' && (ft_putstr_fd(ap, 1, res)) == -1)
-		return (-1);
-	else if (c == 'p' && (ft_putnbr_base(ap, 16, res, 0, 0)) == -1)
-		return (-1);
-	else if (c == 'd' && (ft_putnbr_base(ap, 10, res, 1, 0)) == -1)
-		return (-1);
-	else if (c == 'i' && (ft_putnbr_base(ap, 10, res, 1, 0)) == -1)
-		return (-1);
-	else if (c == 'u' && (ft_putnbr_base(ap, 10, res, 0, 0)) == -1)
-		return (-1);
-	else if (c == 'x' && (ft_putnbr_base(ap, 16, res, 0, 0)) == -1)
-		return (-1);
-	else if (c == 'X' && (ft_putnbr_base(ap, 16, res, 0, 1)) == -1)
-		return (-1);
-	else if (c == '%' && (ft_putchar_fd('%', 1, res)) == -1)
-		return (-1);
-	return (res);
+	return (res + count);
 }
 
 // static int	ft_percent_bonus(char c)
@@ -49,7 +54,7 @@ static int	ft_checker(va_list ap, char const *str, int res)
 	{
 		while (str[i] && str[i] != '%')
 		{
-			if ((ft_putchar_fd(str[i], 1, res)) == -1);
+			if ((ft_putchar_fd(str[i], res)) == -1)
 				return (-1);
 			i++;
 			res++;
@@ -57,9 +62,9 @@ static int	ft_checker(va_list ap, char const *str, int res)
 		if (str[i] == '%')
 		{
 			i++;
-			if ((ft_checker_bonus(str[i], res)) == -1)
-				return (-1);
-			else if ((ft_percent(ap, str[i], res)) == -1)
+			// if ((ft_checker_bonus(str[i], res)) == -1)
+			// 	return (-1);
+			if ((ft_percent(ap, str[i], res)) == -1)
 				return (-1);
 			i++;
 		}
@@ -74,7 +79,8 @@ int	ft_printf(char const *str, ...)
 
 	res = 0;
 	va_start(ap, str);
-	if (ft_checker(ap, str, res) == -1)
+	res = ft_checker(ap, str, res);
+	if (res == -1)
 		return (-1);
 	va_end(ap);
 	return (res);
@@ -86,28 +92,34 @@ int	main(void)
 	// int		i;
 	// char	*ch;
 	char 	*str;
-	int len;
+	//int len;
 
 	c = 'h';
+	int org;
+	int mio;
 	// i = 54;
 	// ch = &c;
 	str = "Soy Eduardo Manos Tijeras. Te corto el pelo?";
-	printf("Char: %c\n", c);
-	ft_printf("Char: %c\n", c);
-	printf("String: %s\n", str);
-	ft_printf("String: %s\n", str);
-	// printf("Pointer: %p\n", ch);
-	// ft_printf("Pointer: %p\n", ch);
-	// printf("Decimal: %d\n", i);
-	// ft_printf("Decimal: %d\n", i);
-	// printf("Entero base 10: %i", i);
-	// ft_printf("Entero base 10: %i", i);
-	// printf("Decimal base 10 sin signo: %u", i);
-	// ft_printf("Decimal base 10 sin signo: %u", i);
-	// printf("Hexadecimal minus: %u", i);
-	// ft_printf("Hexadecimal minus: %u", i);
-	// printf("Hexadecimal mayus: %u", i);
-	// ft_printf("Hexadecimal mayus: %u", i);
-	ft_printf("%%");
+	org = printf("ORI - Char: %c\n", c);
+	mio = ft_printf("MIA - Char: %c\n", c);
+	printf("%d ---- %d\n", org, mio);
+	org = printf("ORI - String: %s\n", str);
+	mio = ft_printf("MIA - String: %s\n", str);
+	printf("%d ---- %d\n", org, mio);
+	// printf("ORI - Pointer: %p\n", ch);
+	// ft_printf("MIA - Pointer: %p\n", ch);
+	// printf("ORI - Decimal: %d\n", i);
+	// ft_printf("MIA - Decimal: %d\n", i);
+	// printf("ORI - Entero base 10: %i", i);
+	// ft_printf("MIA - Entero base 10: %i", i);
+	// printf("ORI - Decimal base 10 sin signo: %u", i);
+	// ft_printf("MIA - Decimal base 10 sin signo: %u", i);
+	// printf("ORI - Hexadecimal minus: %u", i);
+	// ft_printf("MIA - Hexadecimal minus: %u", i);
+	// printf("ORI - Hexadecimal mayus: %u", i);
+	// ft_printf("MIA - Hexadecimal mayus: %u", i);
+	org = printf("ORI - Porcentaje: %%\n");
+	mio = ft_printf("MIO - Porcentaje: %%\n");
+	printf("%d ---- %d\n", org, mio);
 	return (0);
 }

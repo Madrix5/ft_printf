@@ -8,3 +8,4 @@ main.c
 *.swn
 objects
 *.h.*
+a.out

@@ -6,7 +6,7 @@
 /*   By: adrijime <adrijime@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/06 20:00:20 by adrijime          #+#    #+#             */
-/*   Updated: 2024/02/14 18:19:34 by adrijime         ###   ########.fr       */
+/*   Updated: 2024/02/14 18:29:47 by adrijime         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,12 +23,12 @@ static int	ft_percent(va_list ap, char	c, int res)
 		count += ft_putstr_fd(va_arg(ap, char *), res);
 	// else if (c == 'p')
 	// 	count += ft_putnbr_base(va_arg(ap, unsigned long long), 16, res, 0, 0);
-	// else if (c == 'd')
-	// 	count += ft_putnbr(va_arg(ap, int), 10, res, 1, 0);
-	// else if (c == 'i')
-	// 	count += ft_putnbr(va_arg(ap, int), 10, res, 1, 0);
-	// else if (c == 'u')
-	// 	count += ft_putnbr(va_arg(ap, int), 10, res, 0, 0);
+	else if (c == 'd')
+	 	count += ft_putnbr(va_arg(ap, int), res, 1);
+	else if (c == 'i')
+	 	count += ft_putnbr(va_arg(ap, int), res, 1);
+	else if (c == 'u')
+	 	count += ft_putnbr(va_arg(ap, int), res, 0);
 	// else if (c == 'x')
 	// 	count += ft_putnbr_base(va_arg(ap, unsigned long long), 16, res, 0, 0);
 	// else if (c == 'X')

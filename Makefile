@@ -6,7 +6,7 @@
 #    By: adrijime <adrijime@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/01/31 17:44:31 by adrijime          #+#    #+#              #
-#    Updated: 2024/02/13 20:11:17 by adrijime         ###   ########.fr        #
+#    Updated: 2024/02/14 19:49:49 by adrijime         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -44,7 +44,7 @@ LIBC 	= ar -rcs
 
 SRCF =	ft_printf.c \
 		ft_printf_utils.c \
-		ft_putnbr_base.c
+		ft_putnbr.c
 
 #=============================== DIRECTORIES ==================================#
 

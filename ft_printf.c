@@ -6,7 +6,7 @@
 /*   By: adrijime <adrijime@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/06 20:00:20 by adrijime          #+#    #+#             */
-/*   Updated: 2024/02/14 19:43:47 by adrijime         ###   ########.fr       */
+/*   Updated: 2024/02/14 20:06:45 by adrijime         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,7 +92,7 @@ int	main(void)
 	int mio;
 
 	c = 'h';
-	i = 54;
+	i = -54;
 	// ch = &c;
 	str = "Soy Eduardo Manos Tijeras. Te corto el pelo?";
 	org = printf("ORI - Char: %c\n", c);

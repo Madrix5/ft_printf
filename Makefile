@@ -6,7 +6,7 @@
 #    By: adrijime <adrijime@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/01/31 17:44:31 by adrijime          #+#    #+#              #
-#    Updated: 2024/02/14 19:49:49 by adrijime         ###   ########.fr        #
+#    Updated: 2024/02/14 20:04:44 by adrijime         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -48,21 +48,22 @@ SRCF =	ft_printf.c \
 
 #=============================== DIRECTORIES ==================================#
 
-DIR_OBJ = objects
+DIR_OBJ = ./objects
 
 OBJ = $(addprefix $(DIR_OBJ)/, $(SRCF:.c=.o))
 
 #================================= RULES ======================================#
 
-all: dir $(NAME)
+all: $(DIR_OBJ) $(OBJ) $(NAME)
 -include $(DEP)
 
-dir:
+$(DIR_OBJ):
 		mkdir -p $(DIR_OBJ)
 		echo "$(YELLOW)💾== Directory created objects and dependencies ==💾$(DEF_COLOR)"
 
-$(DIR_OBJ)/%.o: %.c Makefile libft.h | $(DIR_OBJ)
+$(DIR_OBJ)/%.o: %.c Makefile libft.h
 		$(CC) $(FLAGS) -c $< -o $@
+		echo "Hola caracola"
 		
 $(NAME): $(OBJ) Makefile printf.h
 		$(LIBC) $@ $<

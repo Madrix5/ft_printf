@@ -6,13 +6,13 @@
 /*   By: adrijime <adrijime@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/06 20:00:20 by adrijime          #+#    #+#             */
-/*   Updated: 2024/02/15 17:53:36 by adrijime         ###   ########.fr       */
+/*   Updated: 2024/02/15 19:03:46 by adrijime         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "printf.h"
+#include "ft_printf.h"
 
-static int	ft_percent(va_list ap, char	c)
+static int	ft_percent(va_list ap, char c)
 {
 	int	count;
 
@@ -24,11 +24,11 @@ static int	ft_percent(va_list ap, char	c)
 	else if (c == 'p')
 		count += ft_putnbr_base(va_arg(ap, unsigned long long), 2);
 	else if (c == 'd')
-	 	count += ft_putnbr(va_arg(ap, int), 1);
+		count += ft_putnbr(va_arg(ap, int), 1);
 	else if (c == 'i')
-	 	count += ft_putnbr(va_arg(ap, int), 1);
+		count += ft_putnbr(va_arg(ap, int), 1);
 	else if (c == 'u')
-	 	count += ft_putnbr(va_arg(ap, int), 0);
+		count += ft_putnbr(va_arg(ap, int), 0);
 	else if (c == 'x')
 		count += ft_putnbr_base(va_arg(ap, unsigned long long), 0);
 	else if (c == 'X')
@@ -82,16 +82,17 @@ int	ft_printf(char const *str, ...)
 	return (res);
 }
 
+/*
 int	main(void)
 {
-	char	c;
-	int		mi;
-	int		i;
-	unsigned long long n;
-	char	*ch;
-	char 	*str;
-	int org;
-	int mio;
+	char				c;
+	int					mi;
+	int					i;
+	unsigned long long	n;
+	char				*ch;
+	char 				*str;
+	int					org;
+	int					mio;
 
 	c = 'h';
 	mi = -54;
@@ -137,3 +138,4 @@ int	main(void)
 	printf("%d ---- %d\n", org, mio);
 	return (0);
 }
+*/

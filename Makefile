@@ -6,7 +6,7 @@
 #    By: adrijime <adrijime@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/01/31 17:44:31 by adrijime          #+#    #+#              #
-#    Updated: 2024/02/15 16:28:23 by adrijime         ###   ########.fr        #
+#    Updated: 2024/02/15 19:12:38 by adrijime         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -36,36 +36,38 @@ DARK_YELLOW     =   \033[38;5;143m
 
 NAME	= libftprintf.a
 CC		= cc
-FLAGS	= -Wall -Wextra -Werror -MMD
+FLAGS	= -Wall -Wextra -Werror
 RM 		= rm -rf
 LIBC 	= ar -rcs
 
 #=================================== SRC ======================================#
 
 SRCF =	ft_printf.c \
-		ft_printf_utils.c \
-		ft_putnbr.c
+		ft_printchr.c \
+		ft_printstr.c \
+		ft_putnbr.c \
+		ft_putnbr_base.c
 
 #=============================== DIRECTORIES ==================================#
 
-DIR_OBJ = ./objects
+DIR_OBJ = objects
 
 OBJ = $(addprefix $(DIR_OBJ)/, $(SRCF:.c=.o))
+DEP = $(addprefix $(DIR_OBJ)/, $(SRCF:.c=.d))
 
 #================================= RULES ======================================#
 
-all: $(DIR_OBJ) $(OBJ) $(NAME)
+all: dir $(NAME)
 -include $(DEP)
 
-$(DIR_OBJ):
+dir:
 		mkdir -p $(DIR_OBJ)
-		echo "$(YELLOW)💾== Directory created objects and dependencies ==💾$(DEF_COLOR)"
 
-$(DIR_OBJ)/%.o: %.c Makefile libft.h
-		$(CC) $(FLAGS) -c $< -o $@
-		echo "Hola caracola"
+$(DIR_OBJ)/%.o: %.c Makefile ft_printf.h
+		$(CC) $(FLAGS) -c $< -o $@ -MMD
+		echo "🌚$(BLUE)== Object created in directory ==🎫$(DEF_COLOR)"
 		
-$(NAME): $(OBJ) Makefile printf.h
+$(NAME): $(OBJ) Makefile ft_printf.h
 		$(LIBC) $@ $<
 		echo "$(GREEN)✅=== All compiled with flags, created libftprintf.a ===🖥$(DEF_COLOR)"
 
@@ -76,13 +78,13 @@ clean:
 		echo "🧨$(ORANGE)========== Deleted directory objects! ==========🧨$(DEF_COLOR)"
 
 fclean: clean
-		$(RM) $(NAME) a.out a.out* printf.h.gch .vscode
+		$(RM) $(NAME)
 		echo "🧯$(RED)== objects dependencies and directory deleted ==🧯$(DEF_COLOR)"
 
 re: fclean all
 
 #================================== PHONY =====================================#
 
-.PHONY: all clean fclean re
+.PHONY: all clean fclean re dir
 
 .SILENT:

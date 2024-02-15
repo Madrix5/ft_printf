@@ -6,15 +6,15 @@
 /*   By: adrijime <adrijime@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/06 19:56:44 by adrijime          #+#    #+#             */
-/*   Updated: 2024/02/15 17:53:52 by adrijime         ###   ########.fr       */
+/*   Updated: 2024/02/15 19:01:33 by adrijime         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "printf.h"
+#include "ft_printf.h"
 
 static void	ft_hex(unsigned long long n, int condition)
 {
-	char 	*base;
+	char	*base;
 
 	if (condition == 1)
 		base = "0123456789ABCDEF";

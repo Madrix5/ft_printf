@@ -6,11 +6,11 @@
 /*   By: adrijime <adrijime@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/14 16:21:11 by adrijime          #+#    #+#             */
-/*   Updated: 2024/02/15 17:55:04 by adrijime         ###   ########.fr       */
+/*   Updated: 2024/02/15 18:49:41 by adrijime         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "printf.h"
+#include "ft_printf.h"
 
 static int	w_sign(int n, int count)
 {

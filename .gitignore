@@ -1,4 +1,4 @@
-.vs_code/
+*.json
 .DS_Store
 main.c
 *.o

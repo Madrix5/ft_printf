@@ -6,13 +6,54 @@
 /*   By: adrijime <adrijime@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/06 19:56:44 by adrijime          #+#    #+#             */
-/*   Updated: 2024/02/14 18:43:59 by adrijime         ###   ########.fr       */
+/*   Updated: 2024/02/15 17:47:46 by adrijime         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "printf.h"
 
-int	ft_putnbr_base(unsigned long long n, int res, int mayus)
+static void	ft_hex(unsigned long long n, int condition)
 {
-	return (0);
+	char 	*base;
+
+	if (condition == 1)
+		base = "0123456789ABCDEF";
+	else
+		base = "0123456789abcdef";
+	ft_putchar(base[n]);
+}
+
+static int	ft_nbrput(unsigned long long n, int count, int condition)
+{
+	if (n <= 15)
+	{
+		count++;
+		printf("%d\n", count);
+		ft_hex(n, condition);
+	}
+	else
+	{
+		count += ft_nbrput(n / 16, count, condition);
+		ft_nbrput(n % 16, count, condition);
+		count++;
+	}
+	return (count);
+}
+
+int	ft_putnbr_base(unsigned long long n, int condition)
+{
+	int	count;
+
+	count = 0;
+	if (condition == 2)
+	{
+		write(1, "0x", 2);
+		count += ft_nbrput(n, count, 0);
+		count += 2;
+	}
+	else if (condition == 1)
+		count += ft_nbrput(n, count, 1);
+	else
+		count += ft_nbrput(n, count, 0);
+	return (count);
 }

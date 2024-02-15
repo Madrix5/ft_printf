@@ -6,7 +6,7 @@
 /*   By: adrijime <adrijime@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/14 16:21:11 by adrijime          #+#    #+#             */
-/*   Updated: 2024/02/15 17:04:30 by adrijime         ###   ########.fr       */
+/*   Updated: 2024/02/15 17:55:04 by adrijime         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,8 +34,8 @@ static int	w_sign(int n, int count)
 	else
 	{
 		m = n % 10 + '0';
-		w_sign(n / 10, count);
 		count++;
+		w_sign(n / 10, count);
 		count += ft_putchar(m);
 	}
 	return (count);
@@ -60,8 +60,7 @@ static int	n_sign(int n, int count)
 	else
 	{
 		m = n % 10 + '0';
-		count++;
-		w_sign(n / 10, count);
+		count += n_sign(n / 10, count);
 		count += ft_putchar(m);
 	}
 	return (count);

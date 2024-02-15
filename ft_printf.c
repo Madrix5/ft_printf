@@ -6,7 +6,7 @@
 /*   By: adrijime <adrijime@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/06 20:00:20 by adrijime          #+#    #+#             */
-/*   Updated: 2024/02/15 17:48:05 by adrijime         ###   ########.fr       */
+/*   Updated: 2024/02/15 17:53:36 by adrijime         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -99,41 +99,41 @@ int	main(void)
 	n = 12873812763;
 	ch = &c;
 	str = "Soy Eduardo Manos Tijeras. Te corto el pelo?";
-	// printf("-------------- CARACTER ---------------\n");
-	// org = printf("ORI: %c\n", c);
-	// mio = ft_printf("MIA: %c\n", c);
-	// printf("%d ---- %d\n", org, mio);
-	// printf("------------- STRING --------------\n");
-	// org = printf("ORI: %s\n", str);
-	// mio = ft_printf("MIA: %s\n", str);
-	// printf("%d ---- %d\n", org, mio);
-	// printf("------------- PUNTERO --------------\n");
-	// org = printf("ORI: %p\n", ch);
-	// mio = ft_printf("MIA: %p\n", ch);
-	// printf("%d ---- %d\n", org, mio);
-	// printf("------------- DECIMAL --------------\n");
-	// org = printf("ORI: %d\n", mi);
-	// mio = ft_printf("MIA: %d\n", mi);
-	// printf("%d ---- %d\n", org, mio);
-	// printf("------------- DECIMAL: 10 --------------\n");
-	// org = printf("ORI: %i\n", mi);
-	// mio = ft_printf("MIA: %i\n", mi);
-	// printf("%d ---- %d\n", org, mio);
+	printf("-------------- CARACTER ---------------\n");
+	org = printf("ORI: %c\n", c);
+	mio = ft_printf("MIA: %c\n", c);
+	printf("%d ---- %d\n", org, mio);
+	printf("------------- STRING --------------\n");
+	org = printf("ORI: %s\n", str);
+	mio = ft_printf("MIA: %s\n", str);
+	printf("%d ---- %d\n", org, mio);
+	printf("------------- PUNTERO --------------\n");
+	org = printf("ORI: %p\n", ch);
+	mio = ft_printf("MIA: %p\n", ch);
+	printf("%d ---- %d\n", org, mio);
+	printf("------------- DECIMAL --------------\n");
+	org = printf("ORI: %d\n", mi);
+	mio = ft_printf("MIA: %d\n", mi);
+	printf("%d ---- %d\n", org, mio);
+	printf("------------- DECIMAL: 10 --------------\n");
+	org = printf("ORI: %i\n", mi);
+	mio = ft_printf("MIA: %i\n", mi);
+	printf("%d ---- %d\n", org, mio);
 	printf("------------- DECIMAL: 10 NO SIGNO --------------\n");
 	org = printf("ORI: %u\n", i);
 	mio = ft_printf("MIA: %u\n", i);
 	printf("%d ---- %d\n", org, mio);
-	// printf("------------- HEXADECIMAL MIN --------------\n");
-	// org = printf("ORI: %x\n", i);
-	// mio = ft_printf("MIA: %x\n", i);
-	// printf("%d ---- %d\n", org, mio);
-	// printf("------------- HEXADECIMAL MAY --------------\n");
-	// org = printf("ORI: %X\n", i);
-	// mio = ft_printf("MIA: %X\n", i);
-	// printf("%d ---- %d\n", org, mio);
-	// printf("------------- PORCENTAJE --------------\n");
-	// org = printf("ORI: %%\n");
-	// mio = ft_printf("MIA: %%\n");
-	// printf("%d ---- %d\n", org, mio);
+	printf("------------- HEXADECIMAL MIN --------------\n");
+	org = printf("ORI: %x\n", i);
+	mio = ft_printf("MIA: %x\n", i);
+	printf("%d ---- %d\n", org, mio);
+	printf("------------- HEXADECIMAL MAY --------------\n");
+	org = printf("ORI: %X\n", i);
+	mio = ft_printf("MIA: %X\n", i);
+	printf("%d ---- %d\n", org, mio);
+	printf("------------- PORCENTAJE --------------\n");
+	org = printf("ORI: %%\n");
+	mio = ft_printf("MIA: %%\n");
+	printf("%d ---- %d\n", org, mio);
 	return (0);
 }

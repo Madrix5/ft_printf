@@ -6,7 +6,7 @@
 /*   By: adrijime <adrijime@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/06 19:56:44 by adrijime          #+#    #+#             */
-/*   Updated: 2024/02/15 17:47:46 by adrijime         ###   ########.fr       */
+/*   Updated: 2024/02/15 17:53:52 by adrijime         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,6 @@ static int	ft_nbrput(unsigned long long n, int count, int condition)
 	if (n <= 15)
 	{
 		count++;
-		printf("%d\n", count);
 		ft_hex(n, condition);
 	}
 	else

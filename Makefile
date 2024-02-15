@@ -6,7 +6,7 @@
 #    By: adrijime <adrijime@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/01/31 17:44:31 by adrijime          #+#    #+#              #
-#    Updated: 2024/02/15 19:12:38 by adrijime         ###   ########.fr        #
+#    Updated: 2024/02/15 19:15:19 by adrijime         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -43,8 +43,8 @@ LIBC 	= ar -rcs
 #=================================== SRC ======================================#
 
 SRCF =	ft_printf.c \
-		ft_printchr.c \
-		ft_printstr.c \
+		ft_putchar.c \
+		ft_putstr.c \
 		ft_putnbr.c \
 		ft_putnbr_base.c
 

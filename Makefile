@@ -6,7 +6,7 @@
 #    By: adrijime <adrijime@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/01/31 17:44:31 by adrijime          #+#    #+#              #
-#    Updated: 2024/02/14 20:04:44 by adrijime         ###   ########.fr        #
+#    Updated: 2024/02/15 16:28:23 by adrijime         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -76,7 +76,7 @@ clean:
 		echo "🧨$(ORANGE)========== Deleted directory objects! ==========🧨$(DEF_COLOR)"
 
 fclean: clean
-		$(RM) $(NAME)
+		$(RM) $(NAME) a.out a.out* printf.h.gch .vscode
 		echo "🧯$(RED)== objects dependencies and directory deleted ==🧯$(DEF_COLOR)"
 
 re: fclean all

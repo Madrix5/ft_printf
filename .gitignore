@@ -9,3 +9,4 @@ main.c
 objects
 *.h.*
 a.out
+a.out.*

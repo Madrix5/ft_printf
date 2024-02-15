@@ -6,7 +6,7 @@
 /*   By: adrijime <adrijime@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/14 16:21:11 by adrijime          #+#    #+#             */
-/*   Updated: 2024/02/14 19:42:36 by adrijime         ###   ########.fr       */
+/*   Updated: 2024/02/15 17:04:30 by adrijime         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,7 @@ static int	n_sign(int n, int count)
 	if (n == INT_MIN)
 	{
 		count += ft_putstr("2147483648");
-		return (count + 1);
+		return (count);
 	}
 	if (n < 0)
 		n = -n;

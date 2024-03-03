@@ -68,7 +68,7 @@ $(DIR_OBJ)/%.o: %.c Makefile ft_printf.h
 		echo "🌚$(BLUE)== Object created in directory ==🎫$(DEF_COLOR)"
 		
 $(NAME): $(OBJ) Makefile ft_printf.h
-		$(LIBC) $@ $<
+		$(LIBC) $@ $(OBJ)
 		echo "$(GREEN)✅=== All compiled with flags, created libftprintf.a ===🖥$(DEF_COLOR)"
 
 #================================= CLEAN ======================================#

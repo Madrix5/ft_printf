@@ -10,3 +10,4 @@ objects
 *.h.*
 a.out
 a.out.*
+.vscode/

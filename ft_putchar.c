@@ -14,13 +14,7 @@
 
 int	ft_putchar(char c)
 {
-	int	res;
-
-	res = 0;
-	if (!c)
-		return (-1);
 	if (write(1, &c, 1) == -1)
 		return (-1);
-	res++;
-	return (res);
+	return (1);
 }

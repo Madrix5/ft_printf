@@ -6,7 +6,7 @@
 #    By: adrijime <adrijime@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/01/31 17:44:31 by adrijime          #+#    #+#              #
-#    Updated: 2024/02/15 19:15:19 by adrijime         ###   ########.fr        #
+#    Updated: 2024/03/07 17:28:40 by adrijime         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -42,11 +42,11 @@ LIBC 	= ar -rcs
 
 #=================================== SRC ======================================#
 
-SRCF =	ft_printf.c \
-		ft_putchar.c \
+SRCF =	ft_putchar.c \
 		ft_putstr.c \
 		ft_putnbr.c \
-		ft_putnbr_base.c
+		ft_putnbr_base.c \
+		ft_printf.c
 
 #=============================== DIRECTORIES ==================================#
 
@@ -68,7 +68,7 @@ $(DIR_OBJ)/%.o: %.c Makefile ft_printf.h
 		echo "🌚$(BLUE)== Object created in directory ==🎫$(DEF_COLOR)"
 		
 $(NAME): $(OBJ) Makefile ft_printf.h
-		$(LIBC) $@ $<
+		$(LIBC) $@ $(OBJ)
 		echo "$(GREEN)✅=== All compiled with flags, created libftprintf.a ===🖥$(DEF_COLOR)"
 
 #================================= CLEAN ======================================#

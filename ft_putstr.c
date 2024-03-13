@@ -6,13 +6,13 @@
 /*   By: adrijime <adrijime@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/15 19:11:30 by adrijime          #+#    #+#             */
-/*   Updated: 2024/03/13 12:23:03 by adrijime         ###   ########.fr       */
+/*   Updated: 2024/03/13 13:47:47 by adrijime         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-int	ft_putstr(char *s)
+int	ft_putstr(char *s, t_vars *list)
 {
 	int	i;
 	int	count;
@@ -25,8 +25,7 @@ int	ft_putstr(char *s)
 	{
 		if (ft_putchar(s[i]) == -1)
 			return (-1);
-		count++;
+		list->count++;
 		i++;
 	}
-	return (count);
 }

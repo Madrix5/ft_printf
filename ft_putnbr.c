@@ -6,68 +6,69 @@
 /*   By: adrijime <adrijime@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/14 16:21:11 by adrijime          #+#    #+#             */
-/*   Updated: 2024/03/07 16:53:38 by adrijime         ###   ########.fr       */
+/*   Updated: 2024/03/13 17:57:25 by adrijime         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-static int	w_sign(int n)
+static int	w_sign(int n, t_vars *list)
 {
-	int	count;
-
-	count = 0;
 	if (n == INT_MIN)
 	{
-		count += ft_putstr("-2147483648");
-		return (count);
+		if (ft_putstr("-2147483648", list) == -1)
+			return (-1);
 	}
 	if (n < 0)
 	{
-		count += ft_putchar('-');
+		if (ft_putchar('-', list) == -1)
+			return (-1);
 		n = -n;
 	}
 	if (n <= 9)
 	{
 		n += '0';
-		count += ft_putchar(n);
+		if (ft_putchar(n, list) == -1)
+			return (-1);
 	}
 	else
 	{
-		count += w_sign(n / 10);
-		count += ft_putchar(n % 10 + '0');
+		w_sign(n / 10, list);
+		if (ft_putchar(n % 10 + '0', list) == -1)
+			return (-1);
 	}
-	return (count);
+	return (0);
 }
 
-static int	n_sign(unsigned int n)
+static int	n_sign(unsigned int n, t_vars *list)
 {
-	int	count;
-
-	count = 0;
 	if (n <= 9)
 	{
 		n += '0';
-		count += ft_putchar(n);
+		if (ft_putchar(n, list) == -1)
+			return (-1);
 	}
 	else
 	{
-		count += n_sign(n / 10);
-		count += ft_putchar(n % 10 + '0');
+		if (n_sign(n / 10, list) == -1)
+			return (-1);
+		if (ft_putchar(n % 10 + '0', list) == -1)
+			return (-1);
 	}
-	return (count);
+	return (0);
 }
 
-int	ft_putnbr(int n, int sign)
+int	ft_putnbr(int n, int sign, t_vars *list)
 {
-	int	count;
-
-	count = 0;
 	if (sign == 1)
-		count = w_sign(n);
+	{
+		if (w_sign(n, list) == -1)
+			return (-1);
+	}
 	else
-		count = n_sign(n);
-	if (count == -1)
-		return (-1);
-	return (count);
+	{
+		if (n_sign(n, list) == -1)
+			return (-1);
+	}
+	return (0);
 }

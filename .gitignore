@@ -1,6 +1,5 @@
 *.json
 .DS_Store
-main.c
 *.o
 *.d
 *.swp

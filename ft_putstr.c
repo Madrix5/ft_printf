@@ -6,7 +6,7 @@
 /*   By: adrijime <adrijime@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/15 19:11:30 by adrijime          #+#    #+#             */
-/*   Updated: 2024/03/13 13:47:47 by adrijime         ###   ########.fr       */
+/*   Updated: 2024/03/13 16:00:01 by adrijime         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,9 +23,10 @@ int	ft_putstr(char *s, t_vars *list)
 		s = "(null)";
 	while (s[i] != '\0')
 	{
-		if (ft_putchar(s[i]) == -1)
+		if (ft_putchar(s[i], list) == -1)
 			return (-1);
 		list->count++;
 		i++;
 	}
+	return (0);
 }

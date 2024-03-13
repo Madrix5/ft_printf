@@ -6,7 +6,7 @@
 /*   By: adrijime <adrijime@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/06 20:00:20 by adrijime          #+#    #+#             */
-/*   Updated: 2024/03/07 17:21:33 by adrijime         ###   ########.fr       */
+/*   Updated: 2024/03/08 16:54:06 by adrijime         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,17 +22,17 @@ static int	ft_percent(va_list ap, char c)
 	else if (c == 's')
 		count += ft_putstr(va_arg(ap, char *));
 	else if (c == 'p')
-		count += ft_putnbr_base(va_arg(ap, unsigned long long), 2);
+		count += ft_pointer(va_arg(ap, unsigned long), 2);
 	else if (c == 'd')
 		count += ft_putnbr(va_arg(ap, int), 1);
 	else if (c == 'i')
 		count += ft_putnbr(va_arg(ap, int), 1);
 	else if (c == 'u')
-		count += ft_putnbr(va_arg(ap, int), 0);
+		count += ft_putnbr(va_arg(ap, unsigned int), 0);
 	else if (c == 'x')
-		count += ft_putnbr_base(va_arg(ap, unsigned long long), 0);
+		count += ft_putnbr_base(va_arg(ap, unsigned int), 0);
 	else if (c == 'X')
-		count += ft_putnbr_base(va_arg(ap, unsigned long long), 1);
+		count += ft_putnbr_base(va_arg(ap, unsigned int), 1);
 	else if (c == '%')
 		count += ft_putchar('%');
 	if (count == -1)
@@ -40,7 +40,7 @@ static int	ft_percent(va_list ap, char c)
 	return (count);
 }
 
-static int	ft_checker(va_list ap, char const *str, int res)
+static int	ft_checker(va_list ap, char const *str)
 {
 	int	i;
 	int	count;
@@ -54,18 +54,18 @@ static int	ft_checker(va_list ap, char const *str, int res)
 			if ((ft_putchar(str[i])) == -1)
 				return (-1);
 			i++;
-			res++;
+			count++;
 		}
 		if (str[i] == '%')
 		{
 			i++;
 			count += ft_percent(ap, str[i]);
-			if (res == -1)
+			if (count == -1)
 				return (-1);
 			i++;
 		}
 	}
-	return (res + count);
+	return (count);
 }
 
 int	ft_printf(char const *str, ...)
@@ -75,7 +75,7 @@ int	ft_printf(char const *str, ...)
 
 	res = 0;
 	va_start(ap, str);
-	res = ft_checker(ap, str, res);
+	res = ft_checker(ap, str);
 	if (res == -1)
 		return (-1);
 	va_end(ap);

@@ -6,7 +6,7 @@
 /*   By: adrijime <adrijime@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/06 20:04:21 by adrijime          #+#    #+#             */
-/*   Updated: 2024/02/15 18:53:02 by adrijime         ###   ########.fr       */
+/*   Updated: 2024/03/13 12:14:56 by adrijime         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,7 @@ int	ft_printf(char const *str, ...);
 int	ft_putchar(char c);
 int	ft_putstr(char *s);
 int	ft_putnbr(int n, int sign);
-int	ft_putnbr_base(unsigned long long n, int mayus);
+int	ft_putnbr_base(unsigned int n, int mayus);
+int	ft_point(unsigned long pointer);
 
 #endif

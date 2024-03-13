@@ -6,13 +6,13 @@
 /*   By: adrijime <adrijime@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/06 19:56:44 by adrijime          #+#    #+#             */
-/*   Updated: 2024/03/07 17:45:13 by adrijime         ###   ########.fr       */
+/*   Updated: 2024/03/08 16:36:26 by adrijime         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-static int	ft_hex(unsigned long long n, int condition)
+static int	ft_hex(unsigned int n, int condition)
 {
 	char	*base;
 
@@ -25,12 +25,12 @@ static int	ft_hex(unsigned long long n, int condition)
 	return (0);
 }
 
-static int	ft_nbrput(unsigned long long n, int count, int condition)
+static int	ft_nbrput(unsigned int n, int count, int condition)
 {
 	if (n <= 15)
 	{
 		count++;
-		if (ft_hex(n, condition) == -1)
+		if (ft_hex((unsigned int)n, condition) == -1)
 			return (-1);
 	}
 	else
@@ -43,19 +43,12 @@ static int	ft_nbrput(unsigned long long n, int count, int condition)
 	return (count);
 }
 
-int	ft_putnbr_base(unsigned long long n, int condition)
+int	ft_putnbr_base(unsigned int n, int condition)
 {
 	int	count;
 
 	count = 0;
-	if (condition == 2)
-	{
-		if (write(1, "0x", 2) == -1)
-			return (-1);
-		count += ft_nbrput(n, count, 0);
-		count += 2;
-	}
-	else if (condition == 1)
+	if (condition == 1)
 	{
 		count += ft_nbrput(n, count, 1);
 		if (count == -1)

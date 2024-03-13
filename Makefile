@@ -6,7 +6,7 @@
 #    By: adrijime <adrijime@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/01/31 17:44:31 by adrijime          #+#    #+#              #
-#    Updated: 2024/03/07 17:28:40 by adrijime         ###   ########.fr        #
+#    Updated: 2024/03/13 12:15:24 by adrijime         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -42,10 +42,11 @@ LIBC 	= ar -rcs
 
 #=================================== SRC ======================================#
 
-SRCF =	ft_putchar.c \
-		ft_putstr.c \
-		ft_putnbr.c \
-		ft_putnbr_base.c \
+SRCF =	ft_putchar.c 		\
+		ft_putstr.c 		\
+		ft_putnbr.c 		\
+		ft_putnbr_hex.c 	\
+		ft_pointer.c 		\
 		ft_printf.c
 
 #=============================== DIRECTORIES ==================================#
@@ -74,7 +75,7 @@ $(NAME): $(OBJ) Makefile ft_printf.h
 #================================= CLEAN ======================================#
 
 clean:
-		$(RM) $(DIR_OBJ)
+		$(RM) $(DIR_OBJ) a.out a.out.dSYM
 		echo "🧨$(ORANGE)========== Deleted directory objects! ==========🧨$(DEF_COLOR)"
 
 fclean: clean

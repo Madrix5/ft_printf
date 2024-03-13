@@ -6,15 +6,16 @@
 /*   By: adrijime <adrijime@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/13 17:50:12 by adrijime          #+#    #+#             */
-/*   Updated: 2024/02/16 18:09:44 by adrijime         ###   ########.fr       */
+/*   Updated: 2024/03/13 13:45:27 by adrijime         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-int	ft_putchar(char c)
+int	ft_putchar(char c, t_vars *list)
 {
 	if (write(1, &c, 1) == -1)
 		return (-1);
-	return (1);
+	list->count++;
+	return (0);
 }

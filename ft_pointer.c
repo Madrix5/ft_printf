@@ -6,7 +6,7 @@
 /*   By: adrijime <adrijime@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/08 16:36:41 by adrijime          #+#    #+#             */
-/*   Updated: 2024/03/08 18:27:55 by adrijime         ###   ########.fr       */
+/*   Updated: 2024/03/13 12:28:46 by adrijime         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,19 +26,19 @@ int	ft_point(unsigned long pointer)
 {
 	int	count;
 
-	count = 0;
-	write(1, "0x", 2);
+	if (write(1, "0x", 2) == -1)
+		return (-1);
+	count = 2;
 	if (pointer <= 15)
 	{
-		count++;
 		if (ft_writing(pointer) == -1)
 			return (-1);
+		count++;
 	}
 	else
 	{
 		count += ft_point(pointer / 16);
-		if (ft_point(pointer % 16) == -1)
-			return (-1);
+		ft_point(pointer % 16);
 		count++;
 	}
 	return (count);

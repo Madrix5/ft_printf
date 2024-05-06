@@ -5,13 +5,14 @@
 #                                                     +:+ +:+         +:+      #
 #    By: adrijime <adrijime@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2024/01/31 17:44:31 by adrijime          #+#    #+#              #
-#    Updated: 2024/03/13 12:15:24 by adrijime         ###   ########.fr        #
+#    Created: 2024/05/06 16:00:58 by adrijime          #+#    #+#              #
+#    Updated: 2024/05/06 16:13:45 by adrijime         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-#================================= COLORES ====================================#
-
+################################################################################
+#                                     COLORS                                   #
+################################################################################
 DEL_LINE        =   \033[2K
 ITALIC          =   \033[3m
 BOLD            =   \033[1m
@@ -32,60 +33,52 @@ MID_GRAY        =   \033[38;5;245m
 DARK_GREEN      =   \033[38;2;75;179;82m
 DARK_YELLOW     =   \033[38;5;143m
 
-#================================ VARIABLES ===================================#
+################################################################################
+#                                     VARS	                                   #
+################################################################################
+NAME		= libftprintf.a
+CC 		= cc
+CFLAGS	= -Wall -Wextra -Werror -MMD
+AR		= ar -rcs
+HEADER	= ft_printf.h
+SRCS = ft_printf.c printf_utils.c
 
-NAME	= libftprintf.a
-CC		= cc
-FLAGS	= -Wall -Wextra -Werror
-RM 		= rm -rf
-LIBC 	= ar -rcs
+################################################################################
+#                                  OBJECTS&DEPS	                               #
+################################################################################
 
-#=================================== SRC ======================================#
+OBJS		= $(addprefix obj/, ${SRCS:.c=.o})
+DEP			= $(addprefix obj/, ${SRC:.c=.d})
 
-SRCF =	ft_putchar.c 		\
-		ft_putstr.c 		\
-		ft_putnbr.c 		\
-		ft_putnbr_hex.c 	\
-		ft_pointer.c 		\
-		ft_printf.c
+################################################################################
+#                                      RULES	                               #
+################################################################################
 
-#=============================== DIRECTORIES ==================================#
+all: ${NAME}
 
-DIR_OBJ = objects
-
-OBJ = $(addprefix $(DIR_OBJ)/, $(SRCF:.c=.o))
-DEP = $(addprefix $(DIR_OBJ)/, $(SRCF:.c=.d))
-
-#================================= RULES ======================================#
-
-all: dir $(NAME)
 -include $(DEP)
 
-dir:
-		mkdir -p $(DIR_OBJ)
 
-$(DIR_OBJ)/%.o: %.c Makefile ft_printf.h
-		$(CC) $(FLAGS) -c $< -o $@ -MMD
-		echo "🌚$(BLUE)== Object created in directory ==🎫$(DEF_COLOR)"
-		
-$(NAME): $(OBJ) Makefile ft_printf.h
-		$(LIBC) $@ $(OBJ)
-		echo "$(GREEN)✅=== All compiled with flags, created libftprintf.a ===🖥$(DEF_COLOR)"
+${NAME}:	${OBJS}
+			$(AR) ${NAME} $(OBJS)
 
-#================================= CLEAN ======================================#
+
+obj/%.o: %.c $(HEADER) Makefile
+			mkdir -p $(dir $@)
+			$(CC) $(CFLAGS) -c $< -o $@
 
 clean:
-		$(RM) $(DIR_OBJ) a.out a.out.dSYM
-		echo "🧨$(ORANGE)========== Deleted directory objects! ==========🧨$(DEF_COLOR)"
+			rm -rf obj
 
-fclean: clean
-		$(RM) $(NAME)
-		echo "🧯$(RED)== objects dependencies and directory deleted ==🧯$(DEF_COLOR)"
+fclean:		clean
+			rm -rf ${NAME}
 
-re: fclean all
+re:			fclean all
 
-#================================== PHONY =====================================#
+################################################################################
+#                                      PHONY	                               #
+################################################################################
 
-.PHONY: all clean fclean re dir
+.PHONY:		all clean fclean re bonus
 
 .SILENT:

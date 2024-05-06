@@ -5,71 +5,49 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: adrijime <adrijime@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/02/06 20:00:20 by adrijime          #+#    #+#             */
-/*   Updated: 2024/03/13 18:01:48 by adrijime         ###   ########.fr       */
+/*   Created: 2024/05/06 16:00:16 by adrijime          #+#    #+#             */
+/*   Updated: 2024/05/06 16:15:01 by adrijime         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-static int	ft_percent(va_list ap, char c, t_vars *list)
-{
-	if (c == 'c' && ft_putchar(va_arg(ap, int), list) == -1)
-		return (-1);
-	else if (c == 's' && ft_putstr(va_arg(ap, char *), list) == -1)
-		return (-1);
-	else if (c == 'p' && ft_point(va_arg(ap, unsigned long), list) == -1)
-		return (-1);
-	else if (c == 'd' && ft_putnbr(va_arg(ap, int), 1, list) == -1)
-		return (-1);
-	else if (c == 'i' && ft_putnbr(va_arg(ap, int), 1, list) == -1)
-		return (-1);
-	else if (c == 'u' && ft_putnbr(va_arg(ap, unsigned int), 0, list) == -1)
-		return (-1);
-	else if (c == 'x' && ft_putnbr_b(va_arg(ap, unsigned int), 0, list) == -1)
-		return (-1);
-	else if (c == 'X' && ft_putnbr_b(va_arg(ap, unsigned int), 1, list) == -1)
-		return (-1);
-	else if (c == '%' && ft_putchar('%', list) == -1)
-		return (-1);
-	return (0);
-}
-
-static int	ft_checker(va_list ap, char const *str, t_vars *list)
-{
-	int	i;
-
-	list->count = 0;
-	i = 0;
-	while (str[i])
-	{
-		while (str[i] && str[i] != '%')
-		{
-			if ((ft_putchar(str[i], list)) == -1)
-				return (-1);
-			i++;
-			list->count++;
-		}
-		if (str[i] == '%')
-		{
-			i++;
-			if (ft_percent(ap, str[i], list) == -1)
-				return (-1);
-			i++;
-		}
-	}
-	return (0);
-}
-
-int	ft_printf(char const *str, ...)
+int	ft_printf(const char *str, ...)
 {
 	va_list	ap;
-	t_vars	*list;
+	int		count;
+	int		i;
 
-	list = 0;
 	va_start(ap, str);
-	if (ft_checker(ap, str, list) == -1)
-		return (-1);
+	i = 0;
+	count = 0;
+	while (str[i] && count != -1)
+	{
+		if (str[i] == '%')
+		{
+			if (dif_letter(str[i + 1], ap, &count) == -1)
+				return (-1);
+			i++;
+		}
+		else
+			ft_putchar(str[i], &count);
+		if (str[i])
+			i++;
+	}
 	va_end(ap);
-	return (list->count);
+	return (count);
 }
+
+/*
+int	main(void)
+{
+	int		count;
+	char	*name = "Adrian";
+	int		edad = 27;
+
+	count = ft_printf("hola soy %s y tengo %i\n", name, edad);
+	printf("%i\n", count);
+	count = printf("hola soy %s y tengo %i\n", name, edad);
+	printf("%i\n", count);
+}
+*/

@@ -1,15 +1,3 @@
-# **************************************************************************** #
-#                                                                              #
-#                                                         :::      ::::::::    #
-#    Makefile                                           :+:      :+:    :+:    #
-#                                                     +:+ +:+         +:+      #
-#    By: adrijime <adrijime@student.42.fr>          +#+  +:+       +#+         #
-#                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2024/05/06 16:00:58 by adrijime          #+#    #+#              #
-#    Updated: 2024/05/06 16:13:45 by adrijime         ###   ########.fr        #
-#                                                                              #
-# **************************************************************************** #
-
 ################################################################################
 #                                     COLORS                                   #
 ################################################################################
@@ -61,6 +49,7 @@ all: ${NAME}
 
 ${NAME}:	${OBJS}
 			$(AR) ${NAME} $(OBJS)
+			echo "🌈$(GREEN)= TODO COMPILADO! =$(DEF_COLOR)🥂"
 
 
 obj/%.o: %.c $(HEADER) Makefile
@@ -69,9 +58,11 @@ obj/%.o: %.c $(HEADER) Makefile
 
 clean:
 			rm -rf obj
+			echo "🔥$(ORANGE)= ELIMINADA CARPETA OBJ =$(DEF_COLOR)🧯"
 
 fclean:		clean
 			rm -rf ${NAME}
+			echo "🌎$(RED)= ELIMINADO .a =$(DEF_COLOR)☄️"
 
 re:			fclean all
 

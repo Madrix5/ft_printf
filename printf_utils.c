@@ -6,7 +6,7 @@
 /*   By: adrijime <adrijime@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/06 16:01:05 by adrijime          #+#    #+#             */
-/*   Updated: 2024/05/06 16:01:06 by adrijime         ###   ########.fr       */
+/*   Updated: 2024/05/08 20:02:06 by adrijime         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,28 +76,28 @@ int	ft_putnbr_ptr(unsigned long n, int *count, unsigned long base, char flag)
 	return (*count);
 }
 
-int	dif_letter(char dif, va_list ap, int *count)
+int	letter(char let, va_list ap, int *count)
 {
 	if (*count == -1)
 		return (*count);
-	if (dif == 'c')
+	if (let == 'c')
 		return (ft_putchar(va_arg(ap, int), count));
-	else if (dif == 's')
+	else if (let == 's')
 		return (ft_putstr(va_arg(ap, char *), count));
-	else if (dif == 'p')
+	else if (let == 'p')
 	{
 		ft_putstr("0x", count);
-		return (ft_putnbr_ptr(va_arg(ap, unsigned long), count, 16, dif));
+		return (ft_putnbr_ptr(va_arg(ap, unsigned long), count, 16, let));
 	}
-	else if (dif == 'd' || dif == 'i')
-		return (ft_putnbr_base(va_arg(ap, int), count, 10, dif));
-	else if (dif == 'u')
-		return (ft_putnbr_base(va_arg(ap, unsigned int), count, 10, dif));
-	else if (dif == 'x')
-		return (ft_putnbr_base(va_arg(ap, unsigned int), count, 16, dif));
-	else if (dif == 'X')
-		return (ft_putnbr_base(va_arg(ap, unsigned int), count, 16, dif));
-	else if (dif == '%')
+	else if (let == 'd' || let == 'i')
+		return (ft_putnbr_base(va_arg(ap, int), count, 10, let));
+	else if (let == 'u')
+		return (ft_putnbr_base(va_arg(ap, unsigned int), count, 10, let));
+	else if (let == 'x')
+		return (ft_putnbr_base(va_arg(ap, unsigned int), count, 16, let));
+	else if (let == 'X')
+		return (ft_putnbr_base(va_arg(ap, unsigned int), count, 16, let));
+	else if (let == '%')
 		return (ft_putchar('%', count));
 	return (-1);
 }
